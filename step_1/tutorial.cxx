@@ -22,6 +22,8 @@ int main(int argc,char* argv[])
 
 	//Calculate square root
 	const double outputValue = sqrt(inputValue);
-	std::cout<<"The square root of"<<inputValue<<"is "<<outputValue<<std::endl;
+	std::cout<<"The square root of "<<inputValue<<" is "<<outputValue<<std::endl;
 	return 0;
+
+	std::cin.get();
 }
