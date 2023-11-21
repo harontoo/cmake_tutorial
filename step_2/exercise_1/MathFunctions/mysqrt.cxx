@@ -1,3 +1,4 @@
+#include <iostream>
 #include "mysqrt.h"
 
 namespace mathfunctions {
@@ -12,7 +13,7 @@ namespace mathfunctions {
 
 			double result = x;
 			//do ten iterations.
-			for (int i; i <= 10; ++i)
+			for (int i=1; i <= 10; ++i)
 			{
 				if (result <= 0)
 				{
