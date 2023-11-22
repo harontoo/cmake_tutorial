@@ -10,8 +10,13 @@ if (USE_MYMATH)
   add_library(SqrtLibrary STATIC
               mysqrt.cxx
               )
+
 #Add our custom library to link to
+target_link_libraries(SqrtLibrary PUBLIC tutorial_compiler_flags)
 target_link_libraries(MathFunctions PUBLIC SqrtLibrary)
+
+
+
 endif()
 
 #Consumer must include current directory

@@ -1,12 +1,11 @@
 #Any project's top most CMakeLists.txt must start by specifying a minmimum CMake version.
 cmake_minimum_required(VERSION 3.10)
 #Used to start a project and set its name.Added a version number for our project.
-project(exercise1 VERSION 1.1)
+project(exercise2 VERSION 1.1)
 
-#Example of special variables that can be set within a CMake script for a project.
-#In this case the variables "CMAKE_CXX_STANDARD" and "CMAKE_CXX_STANDARD_REQUIRED" are passed to set().
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+add_library(tutorial_compiler_flags INTERFACE)
+target_compile_features(tutorial_compiler_flags INTERFACE cxx_std_11)
 
 #Adding a configuration file that contains our variables.
 configure_file(TutorialConfig.h.in TutorialConfig.h)
