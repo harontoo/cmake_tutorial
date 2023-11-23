@@ -7,6 +7,9 @@ project(exercise2 VERSION 1.1)
 add_library(tutorial_compiler_flags INTERFACE)
 target_compile_features(tutorial_compiler_flags INTERFACE cxx_std_11)
 
+
+target_link_libraries(Tutorial PUBLIC MathFunctions tutorial_compiler_flags)
+
 #Adding a configuration file that contains our variables.
 configure_file(TutorialConfig.h.in TutorialConfig.h)
 

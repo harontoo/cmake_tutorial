@@ -19,7 +19,7 @@ add_subdirectory(MathFunctions)
 add_executable(Tutorial tutorial.cxx)
 
 #Link the new library to the final executable target
-target_link_libraries(Tutorial PUBLIC MathFunctions)
+target_link_libraries(Tutorial PUBLIC MathFunctions  tutorial_compiler_flags)
 
 #Specify where the target include files are located.
 target_include_directories(Tutorial PUBLIC

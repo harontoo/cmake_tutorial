@@ -6,7 +6,7 @@
 
 int main(int argc,char* argv[])
 {
-	std::cout<<"*Exercise 2*\n"<<std::endl;
+	std::cout<<"*Step 1 Exercise 2*\n"<<std::endl;
 //if no input is provided show the user some help on how to interact with the program via cmd/terminal
 	if(argc<2)
 	{
