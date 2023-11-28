@@ -7,6 +7,13 @@ add_library(MathFunctions MathFunctions.cxx)
 #USE_MYMATH variable
 option(USE_MYMATH "Use tutorial custom nath function definitions" ON)
 
+
+#Consumer must include current directory
+target_include_directories(MathFunctions
+                           INTERFACE
+                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+                            $<INSTALL_INTERFACE:include>
+                           )
 #Conditional compilation based on USE_MYMATH variable
 if (USE_MYMATH)
 #include MakeTable.cmake
@@ -31,12 +38,6 @@ target_link_libraries(MathFunctions PUBLIC tutorial_compiler_flags)
 target_compile_definitions(MathFunctions PRIVATE "EXPORTING_MYMATH")
 
 
-#Consumer must include current directory
-target_include_directories(MathFunctions
-                           INTERFACE
-                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-                            $<INSTALL_INTERFACE:include>
-                           )
 
 #[==[
 target_include_directories(MathFunctions
