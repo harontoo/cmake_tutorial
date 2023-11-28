@@ -26,7 +26,9 @@ target_link_libraries(MathFunctions PUBLIC SqrtLibrary)
 
  # link MathFunctions to tutorial_compiler_flags
 target_link_libraries(MathFunctions PUBLIC tutorial_compiler_flags)
-
+# define the symbol stating we are using the declspec(dllexport) when
+# building on windows
+target_compile_definitions(MathFunctions PRIVATE "EXPORTING_MYMATH")
 
 
 #Consumer must include current directory
