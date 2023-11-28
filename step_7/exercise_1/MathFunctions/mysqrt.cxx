@@ -1,5 +1,6 @@
 #include <iostream>
 #include "mysqrt.h"
+#include <cmath>
 
 namespace mathfunctions {
 	namespace details {
@@ -7,7 +8,16 @@ namespace mathfunctions {
 		double mysqrt(double x)
 		{
 			//Check if USE_MYMATH library actually gets called
-			std::cout << "Hello World,USE_MYMATH IS ON" << std::endl;	
+			std::cout << "Hello World,USE_MYMATH IS ON" << std::endl;
+
+			//Use cmath implementation based on the resultim values of HAVE_LOG and HAVE_EXP
+#if defined(HAVE_LOG) && defined(HAVE_EXP)
+			double result = std::exp(std::log(x) * 0.5);
+			std::cout << "Computing sqrt of " << x << " to be " << result
+				<< " using log and exp" << std::endl;
+			return result;
+#else
+			
 			if (x <= 0)
 			{
 				return 0;
@@ -27,6 +37,7 @@ namespace mathfunctions {
 				std::cout << "Computing sqrt of " << x << " to be " << result << std::endl;
 			}
 			return result;
+#endif
 		}
 	}
 }
