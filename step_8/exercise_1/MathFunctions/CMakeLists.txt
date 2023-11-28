@@ -1,30 +1,42 @@
+
 #MathFunction as a library
 add_library(MathFunctions MathFunctions.cxx)
+
+
 
 #USE_MYMATH variable
 option(USE_MYMATH "Use tutorial custom nath function definitions" ON)
 
 #Conditional compilation based on USE_MYMATH variable
 if (USE_MYMATH)
+#include MakeTable.cmake
+include(MakeTable.cmake)
 
   target_compile_definitions(MathFunctions PRIVATE "USE_MYMATH")
   add_library(SqrtLibrary STATIC
               mysqrt.cxx
+               ${CMAKE_CURRENT_BINARY_DIR}/Table.h
               )
-  endif()
 
 #Add our custom library to link to
 target_link_libraries(SqrtLibrary PUBLIC tutorial_compiler_flags)
 target_link_libraries(MathFunctions PUBLIC SqrtLibrary)
+ endif()
 
 
-endif()
+ # link MathFunctions to tutorial_compiler_flags
+target_link_libraries(MathFunctions PUBLIC tutorial_compiler_flags)
+
 
 
 #Consumer must include current directory
 target_include_directories(MathFunctions
                            INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
                            )
+   
+target_include_directories(SqrtLibrary PRIVATE
+                             ${CMAKE_CURRENT_BINARY_DIR}
+                             )
 
 #Installation
 set(installable_libs MathFunctions tutorial_compiler_flags)

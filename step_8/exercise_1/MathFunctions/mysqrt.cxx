@@ -1,5 +1,6 @@
 #include <iostream>
 #include "mysqrt.h"
+#include "Table.h"
 #include <cmath>
 
 namespace mathfunctions {
@@ -23,7 +24,14 @@ namespace mathfunctions {
 				return 0;
 			}
 
+			// use the table to help find an initial value
 			double result = x;
+			if (x >= 1 && x < 10) {
+				std::cout << "Use the table to help find an initial value " << std::endl;
+				result = sqrtTable[static_cast<int>(x)];
+			}
+
+	
 			//do ten iterations.
 			for (int i=1; i <= 10; ++i)
 			{
